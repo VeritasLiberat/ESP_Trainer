@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    public final int NUMBER_OF_COLOR_SELECTIONS = 8;
+    public final int NUMBER_OF_COLOR_SELECTIONS = 24;
 
     public static Random rand = new Random();
 
@@ -39,35 +39,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     class Session {
-        long sessionNumber = System.currentTimeMillis();
-        Timestamp startTimestamp = new Timestamp(System.currentTimeMillis());
-        Timestamp endTimestamp;
-        List<Trial> trials = new ArrayList<>();
-        Trial currentTrial = new Trial(1);
-        int colorSelections = 0;
-        int score = 0;
-        String topMessage = "";
+        public long sessionNumber = System.currentTimeMillis();
+        public Timestamp startTimestamp = new Timestamp(System.currentTimeMillis());
+        public Timestamp endTimestamp;
+        public List<Trial> trials = new ArrayList<>();
+        public Trial currentTrial = new Trial(1);
+        public int colorSelections = 0;
+        public int score = 0;
+        public String topMessage = "";
 
         // Metrics
-        long sessionDuration = 0;
-        int numberOfTrials = 0;
-        int mostConsecutiveCorrect = 0;
+        public long sessionDuration = 0;
+        public int numberOfTrials = 0;
+        public int mostConsecutiveCorrect = 0;
 
-        int greenSelections = 0;
-        int yellowSelections = 0;
-        int redSelections = 0;
-        int blueSelections = 0;
-        int passSelections = 0;
+        public int greenSelections = 0;
+        public int yellowSelections = 0;
+        public int redSelections = 0;
+        public int blueSelections = 0;
+        public int passSelections = 0;
 
-        int greenAnswers = 0;
-        int yellowAnswers = 0;
-        int redAnswers = 0;
-        int blueAnswers = 0;
+        public int greenAnswers = 0;
+        public int yellowAnswers = 0;
+        public int redAnswers = 0;
+        public int blueAnswers = 0;
 
-        int greenCorrect = 0;
-        int yellowCorrect = 0;
-        int redCorrect = 0;
-        int blueCorrect = 0;
+        public int greenCorrect = 0;
+        public int yellowCorrect = 0;
+        public int redCorrect = 0;
+        public int blueCorrect = 0;
 
         Session() {
             updateLabels();
@@ -113,9 +113,6 @@ public class MainActivity extends AppCompatActivity {
 
             // todo: log to the db
 
-            System.out.println("sessionDuration: " + sessionDuration);
-            System.out.println("numberOfTrials: " + numberOfTrials);
-            System.out.println("mostConsecutiveCorrect: " + mostConsecutiveCorrect);
 
             complete();
         }
@@ -128,8 +125,6 @@ public class MainActivity extends AppCompatActivity {
             int consecutiveCorrect = 0;
 
             for (Trial trial: trials) {
-                System.out.println("trialNumber: " + trial.trialNumber +
-                        " trialDuration: " + trial.trialDuration);
 
                 switch (trial.computerSelection) {
                     case GREEN:     greenAnswers++; break;
@@ -241,6 +236,8 @@ public class MainActivity extends AppCompatActivity {
         currentTrialView = findViewById(R.id.current_trial);
         scoreView = findViewById(R.id.score);
         topMessageView = findViewById(R.id.top_message);
+        TextView currentTrialLabelView = findViewById(R.id.current_trial_label);
+        currentTrialLabelView.setText("Current Trial of " + NUMBER_OF_COLOR_SELECTIONS);
 
         currentSession = new Session();
     }
@@ -283,6 +280,7 @@ public class MainActivity extends AppCompatActivity {
 
         Gson gson = new Gson();
         String completeSession = gson.toJson(currentSession);
+        System.out.println("completeSession: " + completeSession);
         completeIntent.putExtra("completeSession", completeSession);
 
         Handler handler = new Handler();
