@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    public final int NUMBER_OF_COLOR_SELECTIONS = 24;
+    public final int NUMBER_OF_COLOR_SELECTIONS = 8;
 
     public static Random rand = new Random();
 
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         // Metrics
         long sessionDuration = 0;
         int numberOfTrials = 0;
+        int mostConsecutiveCorrect = 0;
 
         int greenSelections = 0;
         int yellowSelections = 0;
@@ -109,7 +110,13 @@ public class MainActivity extends AppCompatActivity {
 
         void completeSession() {
             calculateMetrics();
+
             // todo: log to the db
+
+            System.out.println("sessionDuration: " + sessionDuration);
+            System.out.println("numberOfTrials: " + numberOfTrials);
+            System.out.println("mostConsecutiveCorrect: " + mostConsecutiveCorrect);
+
             complete();
         }
 
@@ -118,7 +125,12 @@ public class MainActivity extends AppCompatActivity {
             sessionDuration = endTimestamp.getTime() - startTimestamp.getTime();
             numberOfTrials = trials.size();
 
+            int consecutiveCorrect = 0;
+
             for (Trial trial: trials) {
+                System.out.println("trialNumber: " + trial.trialNumber +
+                        " trialDuration: " + trial.trialDuration);
+
                 switch (trial.computerSelection) {
                     case GREEN:     greenAnswers++; break;
                     case YELLOW:    yellowAnswers++; break;
@@ -141,6 +153,18 @@ public class MainActivity extends AppCompatActivity {
                                     break;
                     case PASS:      passSelections++;
                                     break;
+                }
+
+                if (!trial.isPass) {
+                    if (trial.isCorrect) {
+                        consecutiveCorrect++;
+                        if (consecutiveCorrect > mostConsecutiveCorrect) {
+                            mostConsecutiveCorrect = consecutiveCorrect;
+                        }
+                    } else {
+                        consecutiveCorrect = 0;
+                    }
+
                 }
             }
         }
