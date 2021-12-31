@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class CompleteActivity extends AppCompatActivity {
 
@@ -19,9 +20,9 @@ public class CompleteActivity extends AppCompatActivity {
     }
 
     protected void displayCompletion() {
-        Gson gson = new Gson();
-        MainActivity.Session session = gson.fromJson(
-                getIntent().getStringExtra("completeSession"), MainActivity.Session.class);
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Session session = gson.fromJson(
+                getIntent().getStringExtra("completeSession"), Session.class);
 
         String score = Integer.toString(session.score);
         String resultMessage = session.topMessage;
