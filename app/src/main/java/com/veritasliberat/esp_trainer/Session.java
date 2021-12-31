@@ -8,6 +8,7 @@ import com.google.gson.annotations.Expose;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -43,6 +44,8 @@ public class Session {
     public int numberOfTrials = 0;
     @Expose
     public int mostConsecutiveCorrect = 0;
+    @Expose
+    public long meanTrialDuration = 0;
 
     @Expose
     public int greenSelections = 0;
@@ -126,27 +129,31 @@ public class Session {
         mainActivity.sessionDao.insertSession(this);
         mainActivity.trialDao.insertTrials(trials);
 
-        // Testing
+//        dbTest();
+    }
+
+    void dbTest() {
         Session[] allSessions = mainActivity.sessionDao.getAllSessions();
         for (Session session : allSessions) {
             System.out.println("sessionNumber: " + session.sessionNumber +
                     " endTimestamp: " + session.endTimestamp +
                     " score: " + session.score);
             Trial[] trials = mainActivity.trialDao.getSessionsTrials(session.sessionNumber);
-            System.out.println("Test");
-
+            mainActivity.trialDao.deleteTrials(Arrays.asList(trials));
         }
-        // Testing
+        mainActivity.sessionDao.deleteSessions(Arrays.asList(allSessions));
     }
 
     void calculateMetrics() {
         endTimestamp = new Timestamp(System.currentTimeMillis());
         sessionDuration = endTimestamp.getTime() - startTimestamp.getTime();
         numberOfTrials = trials.size();
+        meanTrialDuration = sessionDuration / numberOfTrials;
 
         int consecutiveCorrect = 0;
 
         for (Trial trial: trials) {
+            // Summing Answers (Computer Selections)
             switch (trial.computerSelection) {
                 case GREEN:     greenAnswers++; break;
                 case YELLOW:    yellowAnswers++; break;
@@ -154,6 +161,7 @@ public class Session {
                 case BLUE:      blueAnswers++; break;
             }
 
+            // Summing User Selections and Correct/Pass Selections
             switch (trial.userSelection) {
                 case GREEN:     greenSelections++;
                     if (trial.isCorrect) {greenCorrect++;}
@@ -171,6 +179,7 @@ public class Session {
                     break;
             }
 
+            // Determine Most Consecutive Correct Selections
             if (!trial.isPass) {
                 if (trial.isCorrect) {
                     consecutiveCorrect++;
@@ -184,5 +193,6 @@ public class Session {
             }
         }
     }
+
 }
 

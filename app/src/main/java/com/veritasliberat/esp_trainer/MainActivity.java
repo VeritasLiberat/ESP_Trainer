@@ -33,8 +33,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * todo:    add "play as guest" button (simply doesn't save session in db)
+ *              this can only be selected on the first trial, afterwards it disappears
+ *          add history activity (shows all past sessions, click on one to go to result view)
+ *          add metrics activity (show key metrics for the user)
+ *          change 'complete' activity to the SessionResultsActivity (show info for that session)
+ *              this is called after the session is complete, or from the history activity
+*           add "remove session history" button, with confirmation box
+ */
+
 public class MainActivity extends AppCompatActivity {
-    public static final int NUMBER_OF_COLOR_SELECTIONS = 4;
+    public static final int NUMBER_OF_COLOR_SELECTIONS = 24;
 
     TextView currentTrialView;
     TextView scoreView;
@@ -45,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
     AppDatabase db;
     SessionDao sessionDao;
     TrialDao trialDao;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
