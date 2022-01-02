@@ -10,4 +10,6 @@
     <string name="complete_selections">Number of Each Color Selected by User</string>
     <string name="complete_answers">Number of Each Color Selected by Computer</string>
     <string name="complete_correct">Number of Each Color Correctly Selected</string>
+    <string name="guest_button">Guest</string>
+    <string name="guest_label">Guest Mode</string>
 </resources>

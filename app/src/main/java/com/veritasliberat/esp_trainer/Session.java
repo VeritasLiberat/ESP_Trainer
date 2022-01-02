@@ -1,5 +1,9 @@
 package com.veritasliberat.esp_trainer;
 
+import android.view.View;
+import android.widget.TextView;
+
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -36,6 +40,8 @@ public class Session {
     public int score = 0;
     @Expose
     public String topMessage = "";
+    @Ignore
+    public boolean guestMode = false;
 
     // Metrics
     @Expose
@@ -45,6 +51,7 @@ public class Session {
     @Expose
     public int mostConsecutiveCorrect = 0;
     @Expose
+    @ColumnInfo(defaultValue = "0")
     public long meanTrialDuration = 0;
 
     @Expose
@@ -79,6 +86,8 @@ public class Session {
     public Session(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
         currentTrial = new Trial(sessionNumber, 1, mainActivity);
+        mainActivity.guestSwitch.setVisibility(View.VISIBLE);
+        mainActivity.guestLabel.setVisibility(View.GONE);
         updateLabels();
     }
 
@@ -112,6 +121,13 @@ public class Session {
         updateLabels();
         trials.add(currentTrial);
 
+        if (currentTrial.trialNumber == 1) {
+            mainActivity.guestSwitch.setVisibility(View.GONE);
+            if (guestMode) {
+                mainActivity.guestLabel.setVisibility(View.VISIBLE);
+            }
+        }
+
         if (colorSelections >= MainActivity.NUMBER_OF_COLOR_SELECTIONS) {
             completeSession();
         }
@@ -121,7 +137,11 @@ public class Session {
 
     void completeSession() {
         calculateMetrics();
-        saveSession();
+
+        if (!guestMode) {
+            saveSession();
+        }
+
         mainActivity.complete();
     }
 

@@ -1,20 +1,9 @@
 package com.veritasliberat.esp_trainer;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Dao;
-import androidx.room.Database;
-import androidx.room.Delete;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.Index;
-import androidx.room.Insert;
-import androidx.room.PrimaryKey;
-import androidx.room.Query;
 import androidx.room.Room;
-import androidx.room.RoomDatabase;
-import androidx.room.TypeConverter;
-import androidx.room.TypeConverters;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,15 +12,11 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 /**
  * todo:    add "play as guest" button (simply doesn't save session in db)
@@ -41,6 +26,7 @@ import java.util.Random;
  *          change 'complete' activity to the SessionResultsActivity (show info for that session)
  *              this is called after the session is complete, or from the history activity
 *           add "remove session history" button, with confirmation box
+ *          extract the blue to a colors.xml entry
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -49,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     TextView currentTrialView;
     TextView scoreView;
     TextView topMessageView;
+    TextView guestSwitch;
+    TextView guestLabel;
 
     Session currentSession;
 
@@ -66,12 +54,17 @@ public class MainActivity extends AppCompatActivity {
         topMessageView = findViewById(R.id.top_message);
         TextView currentTrialLabelView = findViewById(R.id.current_trial_label);
         currentTrialLabelView.setText("Current Trial of " + NUMBER_OF_COLOR_SELECTIONS);
+        guestSwitch = findViewById(R.id.guest_switch);
+        guestLabel = findViewById(R.id.guest_label);
 
         currentSession = new Session(this);
         db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "esp_trainer_db").allowMainThreadQueries().build();
+                AppDatabase.class, "esp_trainer_db").fallbackToDestructiveMigration()
+                .allowMainThreadQueries().build();
         sessionDao = db.sessionDao();
         trialDao = db.trialDao();
+
+        guestMode();
     }
 
     public void clickGreen(View view) {
@@ -144,6 +137,12 @@ public class MainActivity extends AppCompatActivity {
 
         Handler handler = new Handler();
         handler.postDelayed((Runnable) button::clearAnimation, 600);
+    }
+
+    public void guestMode() {
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch guestSwitch = (Switch) findViewById(R.id.guest_switch);
+        guestSwitch.setOnCheckedChangeListener((compoundButton, isChecked) -> currentSession.guestMode = isChecked);
+
     }
 
 }
