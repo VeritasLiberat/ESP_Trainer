@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -24,7 +25,8 @@ import com.google.gson.GsonBuilder;
  *          add metrics activity (show key metrics for the user)
  *          change 'complete' activity to the SessionResultsActivity (show info for that session)
  *              this is called after the session is complete, or from the history activity
- *          add menu
+ *          add info page
+ *              detail more about Targ and this app (explain guest button)
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -125,6 +127,11 @@ public class MainActivity extends AppCompatActivity {
     public void correct() {
         Intent correctIntent = new Intent(this, CorrectActivity.class);
         startActivity(correctIntent);
+    }
+
+    public void menu(View view) {
+        Intent menuIntent = new Intent(this, MenuActivity.class);
+        startActivity(menuIntent);
     }
 
     public void highlightCorrectButton(Selection computerSelection) {

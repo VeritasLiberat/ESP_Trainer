@@ -8,6 +8,8 @@
         <entry key="app/src/main/res/layout/activity_complete.xml" value="0.55" />
         <entry key="app/src/main/res/layout/activity_correct.xml" value="0.46805555555555556" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.55" />
+        <entry key="app/src/main/res/layout/activity_menu.xml" value="0.49296875" />
+        <entry key="app/src/main/res/layout/activity_metrics.xml" value="0.4048611111111111" />
       </map>
     </option>
   </component>

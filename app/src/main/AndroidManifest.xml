@@ -12,8 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ESP_Trainer" >
         <activity android:name="com.veritasliberat.esp_trainer.CorrectActivity" />
+        <activity android:name="com.veritasliberat.esp_trainer.MenuActivity" />
+        <activity android:name="com.veritasliberat.esp_trainer.InfoActivity"
+            android:parentActivityName="com.veritasliberat.esp_trainer.MenuActivity"/>
+        <activity android:name="com.veritasliberat.esp_trainer.MetricsActivity"
+            android:parentActivityName="com.veritasliberat.esp_trainer.MenuActivity"/>
+        <activity android:name="com.veritasliberat.esp_trainer.HistoryActivity"
+            android:parentActivityName="com.veritasliberat.esp_trainer.MenuActivity"/>
         <activity android:name="com.veritasliberat.esp_trainer.CompleteActivity"
-            android:parentActivityName="com.veritasliberat.esp_trainer.MainActivity"/>
+            android:parentActivityName="com.veritasliberat.esp_trainer.MenuActivity" />
         <activity
             android:name="com.veritasliberat.esp_trainer.MainActivity"
             android:exported="true" >

@@ -12,4 +12,9 @@
     <string name="complete_correct">Number of Each Color Correctly Selected</string>
     <string name="guest_button">Guest</string>
     <string name="guest_label">Guest Mode</string>
+    <string name="menu_title">Menu</string>
+    <string name="menu_train">Train</string>
+    <string name="menu_metrics">Metrics</string>
+    <string name="menu_history">History</string>
+    <string name="menu_info">Info</string>
 </resources>
