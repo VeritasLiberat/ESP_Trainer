@@ -1,0 +1,251 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "77e912b0ea5e3b0f9d010efeddd4901f",
+    "entities": [
+      {
+        "tableName": "Session",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`sessionNumber` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `startTimestamp` INTEGER, `endTimestamp` INTEGER, `colorSelections` INTEGER NOT NULL, `score` INTEGER NOT NULL, `topMessage` TEXT, `sessionDuration` INTEGER NOT NULL, `numberOfTrials` INTEGER NOT NULL, `mostConsecutiveCorrect` INTEGER NOT NULL, `meanTrialDuration` INTEGER NOT NULL DEFAULT 0, `greenSelections` INTEGER NOT NULL, `yellowSelections` INTEGER NOT NULL, `redSelections` INTEGER NOT NULL, `blueSelections` INTEGER NOT NULL, `passSelections` INTEGER NOT NULL, `greenAnswers` INTEGER NOT NULL, `yellowAnswers` INTEGER NOT NULL, `redAnswers` INTEGER NOT NULL, `blueAnswers` INTEGER NOT NULL, `greenCorrect` INTEGER NOT NULL, `yellowCorrect` INTEGER NOT NULL, `redCorrect` INTEGER NOT NULL, `blueCorrect` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "sessionNumber",
+            "columnName": "sessionNumber",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startTimestamp",
+            "columnName": "startTimestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "endTimestamp",
+            "columnName": "endTimestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "colorSelections",
+            "columnName": "colorSelections",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "score",
+            "columnName": "score",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "topMessage",
+            "columnName": "topMessage",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sessionDuration",
+            "columnName": "sessionDuration",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numberOfTrials",
+            "columnName": "numberOfTrials",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mostConsecutiveCorrect",
+            "columnName": "mostConsecutiveCorrect",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "meanTrialDuration",
+            "columnName": "meanTrialDuration",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "greenSelections",
+            "columnName": "greenSelections",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yellowSelections",
+            "columnName": "yellowSelections",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "redSelections",
+            "columnName": "redSelections",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "blueSelections",
+            "columnName": "blueSelections",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "passSelections",
+            "columnName": "passSelections",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "greenAnswers",
+            "columnName": "greenAnswers",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yellowAnswers",
+            "columnName": "yellowAnswers",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "redAnswers",
+            "columnName": "redAnswers",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "blueAnswers",
+            "columnName": "blueAnswers",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "greenCorrect",
+            "columnName": "greenCorrect",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yellowCorrect",
+            "columnName": "yellowCorrect",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "redCorrect",
+            "columnName": "redCorrect",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "blueCorrect",
+            "columnName": "blueCorrect",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "sessionNumber"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Trial",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sessionId` INTEGER NOT NULL, `trialNumber` INTEGER NOT NULL, `computerSelection` TEXT, `computerSelectionTimestamp` INTEGER, `userSelection` TEXT, `userSelectionTimestamp` INTEGER, `isCorrect` INTEGER NOT NULL, `isPass` INTEGER NOT NULL, `trialDuration` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "trialNumber",
+            "columnName": "trialNumber",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "computerSelection",
+            "columnName": "computerSelection",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "computerSelectionTimestamp",
+            "columnName": "computerSelectionTimestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "userSelection",
+            "columnName": "userSelection",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "userSelectionTimestamp",
+            "columnName": "userSelectionTimestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isCorrect",
+            "columnName": "isCorrect",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isPass",
+            "columnName": "isPass",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "trialDuration",
+            "columnName": "trialDuration",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Trial_sessionId",
+            "unique": false,
+            "columnNames": [
+              "sessionId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Trial_sessionId` ON `${TABLE_NAME}` (`sessionId`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '77e912b0ea5e3b0f9d010efeddd4901f')"
+    ]
+  }
+}

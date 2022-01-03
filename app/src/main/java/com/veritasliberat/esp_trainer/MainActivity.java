@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
     Session currentSession;
 
-    AppDatabase db;
-    SessionDao sessionDao;
-    TrialDao trialDao;
+    public static AppDatabase db;
+    public static SessionDao sessionDao;
+    public static TrialDao trialDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
