@@ -25,8 +25,6 @@ import com.google.gson.GsonBuilder;
  *          add metrics activity (show key metrics for the user)
  *          change 'complete' activity to the SessionResultsActivity (show info for that session)
  *              this is called after the session is complete, or from the history activity
- *          add info page
- *              detail more about Targ and this app (explain guest button)
  */
 
 public class MainActivity extends AppCompatActivity {

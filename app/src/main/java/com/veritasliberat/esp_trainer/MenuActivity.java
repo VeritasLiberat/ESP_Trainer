@@ -25,7 +25,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void history(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, HistoryActivity.class);
         startActivity(intent);
     }
 
