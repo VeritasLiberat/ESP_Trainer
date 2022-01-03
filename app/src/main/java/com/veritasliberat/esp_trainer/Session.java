@@ -1,7 +1,6 @@
 package com.veritasliberat.esp_trainer;
 
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -47,7 +46,7 @@ public class Session {
     @Expose
     public boolean guestMode = false;
 
-    // Metrics
+    // Session Metrics
     @Expose
     public long sessionDuration = 0;
     @Expose
@@ -140,7 +139,7 @@ public class Session {
     }
 
     void completeSession() {
-        calculateMetrics();
+        calculateSessionMetrics();
 
         if (!guestMode) {
             saveSession();
@@ -150,25 +149,26 @@ public class Session {
     }
 
     void saveSession() {
-        mainActivity.sessionDao.insertSession(this);
-        mainActivity.trialDao.insertTrials(trials);
+        dbTest();
 
-//        dbTest();
+        MainActivity.sessionDao.insertSession(this);
+        MainActivity.trialDao.insertTrials(trials);
+        MainActivity.metricsDao.insertMetrics(new Metrics(this));
     }
 
     void dbTest() {
-        Session[] allSessions = mainActivity.sessionDao.getAllSessions();
+        Session[] allSessions = MainActivity.sessionDao.getAllSessions();
         for (Session session : allSessions) {
             System.out.println("sessionNumber: " + session.sessionNumber +
                     " endTimestamp: " + session.endTimestamp +
                     " score: " + session.score);
-            Trial[] trials = mainActivity.trialDao.getSessionsTrials(session.sessionNumber);
-            mainActivity.trialDao.deleteTrials(Arrays.asList(trials));
+            Trial[] trials = MainActivity.trialDao.getSessionsTrials(session.sessionNumber);
+            MainActivity.trialDao.deleteTrials(Arrays.asList(trials));
         }
-        mainActivity.sessionDao.deleteSessions(Arrays.asList(allSessions));
+        MainActivity.sessionDao.deleteSessions(Arrays.asList(allSessions));
     }
 
-    void calculateMetrics() {
+    void calculateSessionMetrics() {
         endTimestamp = new Timestamp(System.currentTimeMillis());
         sessionDuration = endTimestamp.getTime() - startTimestamp.getTime();
         numberOfTrials = trials.size();

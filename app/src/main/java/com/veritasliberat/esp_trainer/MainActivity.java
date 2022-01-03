@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static AppDatabase db;
     public static SessionDao sessionDao;
     public static TrialDao trialDao;
+    public static MetricsDao metricsDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 .allowMainThreadQueries().build();
         sessionDao = db.sessionDao();
         trialDao = db.trialDao();
+        metricsDao = db.metricsDao();
     }
 
     public void guestMode() {

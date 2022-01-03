@@ -30,21 +30,31 @@ public class CorrectActivity extends AppCompatActivity {
     }
 
     public void handleCorrect() {
+        vibrate();
+        playSound();
+        showImage();
+
+        Handler handler = new Handler();
+        handler.postDelayed(this::finish, 1693);
+    }
+
+    void vibrate() {
         Vibrator v;
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+    }
 
+    void playSound() {
         mediaPlayer = MediaPlayer.create(this, R.raw.winner);
         mediaPlayer.start();
-        v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+    }
 
+    void showImage() {
         Random rand = new Random();
         int randomInt = rand.nextInt(17) + 1;
         String randomImage = "correct_" + randomInt;
         ImageView img = (ImageView) findViewById(R.id.correct_image);
         int resID = getResources().getIdentifier(randomImage, "drawable",  getPackageName());
         img.setImageResource(resID);
-
-        Handler handler = new Handler();
-        handler.postDelayed(this::finish, 1693);
     }
 }
