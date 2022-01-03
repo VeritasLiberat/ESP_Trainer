@@ -9,20 +9,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class CompleteActivity extends AppCompatActivity {
+public class SessionResultsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_complete);
+        setContentView(R.layout.activity_session_results);
 
-        displayCompletion();
+        displaySession();
     }
 
-    protected void displayCompletion() {
+    protected void displaySession() {
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         Session session = gson.fromJson(
-                getIntent().getStringExtra("completeSession"), Session.class);
+                getIntent().getStringExtra(Session.SESSION_EXTRA_KEY), Session.class);
 
         // Metrics
         String score = Integer.toString(session.score);

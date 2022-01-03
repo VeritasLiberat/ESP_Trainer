@@ -1,24 +1,27 @@
 package com.veritasliberat.esp_trainer;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * Provide views to RecyclerView with data from mDataSet.
  */
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
-    private static final String TAG = "CustomAdapter";
-
-    private final String[] mDataSet;
+    private final Session[] sessions;
 
     /**
      * Provide a reference to the type of views that you are using (custom ViewHolder)
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
 
         public ViewHolder(View v) {
@@ -26,8 +29,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // todo: go to completeActivity with this session
-                    System.out.println(TAG + "Element " + getAdapterPosition() + " clicked.");
+                    System.out.println("Element " + getAdapterPosition() + " clicked.");
+                    int position = getAdapterPosition();
+                    Intent intent = new Intent(v.getContext(), SessionResultsActivity.class);
+
+                    Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+
+                    String completeSession = gson.toJson(sessions[position]);
+                    intent.putExtra(Session.SESSION_EXTRA_KEY, completeSession);
+
+                    v.getContext().startActivity(intent);
                 }
             });
             textView = (TextView) v.findViewById(R.id.textView);
@@ -38,8 +49,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         }
     }
 
-    public CustomAdapter(String[] dataSet) {
-        mDataSet = dataSet;
+    public CustomAdapter(Session[] sessions) {
+        this.sessions = sessions;
     }
 
     // Create new views (invoked by the layout manager)
@@ -54,13 +65,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-//        Log.d(TAG, "Element " + position + " set.");
-        viewHolder.getTextView().setText(mDataSet[position]);
+        Session session = sessions[position];
+        String displayText = "Timestamp: " + session.endTimestamp + " | Score: " + session.score;
+        viewHolder.getTextView().setText(displayText);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataSet.length;
+        return sessions.length;
     }
 }

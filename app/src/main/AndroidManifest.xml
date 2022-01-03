@@ -19,7 +19,7 @@
             android:parentActivityName="com.veritasliberat.esp_trainer.MenuActivity"/>
         <activity android:name="com.veritasliberat.esp_trainer.HistoryActivity"
             android:parentActivityName="com.veritasliberat.esp_trainer.MenuActivity"/>
-        <activity android:name="com.veritasliberat.esp_trainer.CompleteActivity"
+        <activity android:name="com.veritasliberat.esp_trainer.SessionResultsActivity"
             android:parentActivityName="com.veritasliberat.esp_trainer.MenuActivity" />
         <activity
             android:name="com.veritasliberat.esp_trainer.MainActivity"

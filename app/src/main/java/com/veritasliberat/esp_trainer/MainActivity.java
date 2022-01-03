@@ -7,7 +7,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Menu;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -110,13 +109,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void complete() {
-        Intent completeIntent = new Intent(this, CompleteActivity.class);
+        Intent completeIntent = new Intent(this, SessionResultsActivity.class);
 
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
         String completeSession = gson.toJson(currentSession);
-        System.out.println("completeSession: " + completeSession);
-        completeIntent.putExtra("completeSession", completeSession);
+        completeIntent.putExtra(Session.SESSION_EXTRA_KEY, completeSession);
 
         Handler handler = new Handler();
         handler.postDelayed((Runnable) () -> startActivity(completeIntent), 600);

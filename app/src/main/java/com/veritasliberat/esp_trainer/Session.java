@@ -17,6 +17,9 @@ import java.util.List;
 
 @Entity
 public class Session {
+    @Ignore
+    public static final String SESSION_EXTRA_KEY = "session";
+
     @PrimaryKey(autoGenerate = true)
     @Expose
     public long sessionNumber = System.currentTimeMillis();
