@@ -41,6 +41,7 @@ public class Session {
     @Expose
     public String topMessage = "";
     @Ignore
+    @Expose
     public boolean guestMode = false;
 
     // Metrics

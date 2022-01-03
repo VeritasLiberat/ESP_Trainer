@@ -19,18 +19,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
- * todo:    add "play as guest" button (simply doesn't save session in db)
- *              this can only be selected on the first trial, afterwards it disappears
- *          add history activity (shows all past sessions, click on one to go to result view)
+ * todo:    add history activity (shows all past sessions, click on one to go to result view)
+ *              add "remove session history" button, with confirmation box
  *          add metrics activity (show key metrics for the user)
  *          change 'complete' activity to the SessionResultsActivity (show info for that session)
  *              this is called after the session is complete, or from the history activity
-*           add "remove session history" button, with confirmation box
- *          extract the blue to a colors.xml entry
+ *          add menu
  */
 
 public class MainActivity extends AppCompatActivity {
-    public static final int NUMBER_OF_COLOR_SELECTIONS = 24;
+    public static final int NUMBER_OF_COLOR_SELECTIONS = 4;
 
     TextView currentTrialView;
     TextView scoreView;
@@ -49,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        handleViews();
+        setupDatabase();
+        guestMode();
+    }
+
+    public void handleViews() {
         currentTrialView = findViewById(R.id.current_trial);
         scoreView = findViewById(R.id.score);
         topMessageView = findViewById(R.id.top_message);
@@ -56,15 +60,20 @@ public class MainActivity extends AppCompatActivity {
         currentTrialLabelView.setText("Current Trial of " + NUMBER_OF_COLOR_SELECTIONS);
         guestSwitch = findViewById(R.id.guest_switch);
         guestLabel = findViewById(R.id.guest_label);
+    }
 
+    public void setupDatabase() {
         currentSession = new Session(this);
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "esp_trainer_db").fallbackToDestructiveMigration()
                 .allowMainThreadQueries().build();
         sessionDao = db.sessionDao();
         trialDao = db.trialDao();
+    }
 
-        guestMode();
+    public void guestMode() {
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch guestSwitch = (Switch) findViewById(R.id.guest_switch);
+        guestSwitch.setOnCheckedChangeListener((compoundButton, isChecked) -> currentSession.guestMode = isChecked);
     }
 
     public void clickGreen(View view) {
@@ -137,12 +146,6 @@ public class MainActivity extends AppCompatActivity {
 
         Handler handler = new Handler();
         handler.postDelayed((Runnable) button::clearAnimation, 600);
-    }
-
-    public void guestMode() {
-        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch guestSwitch = (Switch) findViewById(R.id.guest_switch);
-        guestSwitch.setOnCheckedChangeListener((compoundButton, isChecked) -> currentSession.guestMode = isChecked);
-
     }
 
 }

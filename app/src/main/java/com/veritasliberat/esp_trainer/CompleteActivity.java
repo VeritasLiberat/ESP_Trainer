@@ -24,6 +24,7 @@ public class CompleteActivity extends AppCompatActivity {
         Session session = gson.fromJson(
                 getIntent().getStringExtra("completeSession"), Session.class);
 
+        // Metrics
         String score = Integer.toString(session.score);
         String resultMessage = session.topMessage;
         if (resultMessage.equals("Select the Correct Square")) {
@@ -35,6 +36,24 @@ public class CompleteActivity extends AppCompatActivity {
 
         TextView resultMessageView = findViewById(R.id.result_message);
         resultMessageView.setText(resultMessage);
+
+        TextView numberOfSelectionsView = findViewById(R.id.number_of_selections);
+        String numberOfSelections = "Number of Selections: " + session.numberOfTrials;
+        numberOfSelectionsView.setText(numberOfSelections);
+
+        TextView mostConsecutiveCorrectView = findViewById(R.id.most_consecutive_correct);
+        String mostConsecutiveCorrect = "Most Consecutive Correct: " + session.mostConsecutiveCorrect;
+        mostConsecutiveCorrectView.setText(mostConsecutiveCorrect);
+
+        TextView sessionDurationView = findViewById(R.id.session_duration);
+        double sessionDurationSeconds = session.sessionDuration / 1000.0;
+        String sessionDuration = "Session Duration in Seconds: " + String.format("%,.1f", sessionDurationSeconds);
+        sessionDurationView.setText(sessionDuration);
+
+        TextView meanTrialDurationView = findViewById(R.id.mean_trial_duration);
+        double meanTrialDurationSeconds = session.meanTrialDuration / 1000.0;
+        String meanTrialDuration = "Mean Trial Duration in Seconds: " + String.format("%,.1f", meanTrialDurationSeconds);
+        meanTrialDurationView.setText(meanTrialDuration);
 
         // Selections
         TextView greenSelectionsView = findViewById(R.id.green_selections);
