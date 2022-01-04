@@ -31,14 +31,7 @@ The purpose of the trainer is to allow you to become aware of what it feels like
 In a year long NASA program with 145 subjects (under Contract 953653 NAS7–100) many were able to significantly improve their scores. Four of the subjects improved their scores at the hundred-to-one level or better. This approach has been used with great success on Wall Street.\n\n
 
 This game can provide the first steps toward experiencing and developing the psychic abilities hidden within us all.</string>
-<!--    <string name="about_body_1">This app is heavily inspired by the ESP Trainer that was developed under a NASA program by Russell Targ at Stanford Research Institute.</string>-->
-<!--    <string name="about_body_2">We have found that people are able to improve their score by using a machine just like this to get in touch with the part of themselves that is psychic. This is often called clairvoyance or precognition, and can enhance your life in many surprising ways.</string>-->
-<!--    <string name="about_body_3">The player is presented with four colored squares. For each trial, one has been selected at random by the ESP Trainer. Your task is to choose the correct square. If you succeed, you will hear a chime, feel a vibration, and see a large color picture. Otherwise, the system flashes the correct square, and you proceed with the next trial. The "correct" indicator counts the number of correct choices. Words of encouragement appear as you achieve the scoring levels of 6, 8, 10, 12, and 14 hits. After 24 color selections you will see metrics about the session.</string>-->
-<!--    <string name="about_body_4">The game offers multi-sensory feedback, reinforcement, and an opportunity to Pass, meeting all the requirements needed for learning this skill. ESP Trainer improves your ability to recognize your intuitive impressions, and it can bring you to a level of intuitive awareness beyond anything you have experienced before.</string>-->
-<!--    <string name="about_body_5">The purpose of the trainer is to allow you to become aware of what it feels like when you psychically choose the correct square. When you don\'t have that special feeling, we encourage you to press the Pass button.</string>-->
-<!--    <string name="about_body_6">In a year long NASA program with 145 subjects (under Contract 953653 NAS7–100) many were able to significantly improve their scores. Four of the subjects improved their scores at the hundred-to-one level or better. This approach has been used with surprising success on Wall Street.</string>-->
-<!--    <string name="about_body_7">This game can provide the first steps toward experiencing and developing the psychic abilities hidden within us all.</string>-->
-    <string name="element_text">Element</string>
+   <string name="element_text">Element</string>
     <string name="high_score">High Score</string>
     <string name="consecutive_correct">Most Consecutive Correct</string>
     <string name="total_sessions">Total Sessions</string>
@@ -46,4 +39,17 @@ This game can provide the first steps toward experiencing and developing the psy
     <string name="mean_number_of_trials">Mean Trials per Session</string>
     <string name="mean_session_duration">Mean Session Duration</string>
     <string name="mean_trial_duration">Mean Trial Duration</string>
+    <string name="total_green_user_selections">Total Green User Selections</string>
+    <string name="total_yellow_user_selections">Total Yellow User Selections</string>
+    <string name="total_red_user_selections">Total Red User Selections</string>
+    <string name="total_blue_user_selections">Total Blue User Selections</string>
+    <string name="total_pass_selections">Total Pass Selections</string>
+    <string name="total_green_computer_selections">Total Green Computer Selections</string>
+    <string name="total_yellow_computer_selections">Total Yellow Computer Selections</string>
+    <string name="total_red_computer_selections">Total Red Computer Selections</string>
+    <string name="total_blue_computer_selections">Total Blue Computer Selections</string>
+    <string name="total_green_correct">Total Green Correct</string>
+    <string name="total_yellow_correct">Total Yellow Correct</string>
+    <string name="total_red_correct">Total Red Correct</string>
+    <string name="total_blue_correct">Total Blue Correct</string>
 </resources>

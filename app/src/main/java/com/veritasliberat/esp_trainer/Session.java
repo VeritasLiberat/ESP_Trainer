@@ -149,11 +149,11 @@ public class Session {
     }
 
     void saveSession() {
-//        dbTest();
-
         MainActivity.sessionDao.insertSession(this);
         MainActivity.trialDao.insertTrials(trials);
         MainActivity.metricsDao.insertMetrics(new Metrics(this));
+
+//        dbTest();
     }
 
     void dbTest() {
@@ -166,6 +166,8 @@ public class Session {
             MainActivity.trialDao.deleteTrials(Arrays.asList(trials));
         }
         MainActivity.sessionDao.deleteSessions(Arrays.asList(allSessions));
+
+        MainActivity.metricsDao.deleteMetrics(new ArrayList<>(Arrays.asList(MainActivity.metricsDao.getAllMetrics())));
     }
 
     void calculateSessionMetrics() {

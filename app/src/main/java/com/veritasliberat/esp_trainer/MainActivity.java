@@ -18,17 +18,9 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-/**
- * todo:    add history activity (shows all past sessions, click on one to go to result view)
- *              add "remove session history" button, with confirmation box
- *          add metrics activity (show key metrics for the user)
- *          change 'complete' activity to the SessionResultsActivity (show info for that session)
- *              this is called after the session is complete, or from the history activity
- */
-
 @SuppressLint("UseSwitchCompatOrMaterialCode")
 public class MainActivity extends AppCompatActivity {
-    public static final int NUMBER_OF_COLOR_SELECTIONS = 4;
+    public static final int NUMBER_OF_COLOR_SELECTIONS = 24;
 
     TextView currentTrialView;
     TextView scoreView;
