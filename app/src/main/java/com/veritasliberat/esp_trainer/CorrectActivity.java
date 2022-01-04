@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
 public class CorrectActivity extends AppCompatActivity {
+    public static final int NUMBER_OF_IMAGES = 40;
+
     MediaPlayer mediaPlayer;
 
     @Override
@@ -51,7 +53,7 @@ public class CorrectActivity extends AppCompatActivity {
 
     void showImage() {
         Random rand = new Random();
-        int randomInt = rand.nextInt(17) + 1;
+        int randomInt = rand.nextInt(NUMBER_OF_IMAGES) + 1;
         String randomImage = "correct_" + randomInt;
         ImageView img = (ImageView) findViewById(R.id.correct_image);
         int resID = getResources().getIdentifier(randomImage, "drawable",  getPackageName());
