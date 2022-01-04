@@ -3,9 +3,9 @@
     <string name="pass_button">PASS</string>
     <string name="reset_button">RESET</string>
     <string name="current_trial_label">Current Trial of 24</string>
-    <string name="correct_label">Correct</string>
+    <string name="correct_label">Score</string>
     <string name="title_activity_complete">CompleteActivity</string>
-    <string name="complete_title">Trials Complete</string>
+    <string name="complete_title">Session Results</string>
     <string name="complete_score">Score</string>
     <string name="complete_selections">Number of Each Color Selected by User</string>
     <string name="complete_answers">Number of Each Color Selected by Computer</string>
@@ -18,19 +18,31 @@
     <string name="menu_history">History</string>
     <string name="menu_info">About</string>
     <string name="about_header">About</string>
-    <string name="about_body">This app is heavily inspired by the ESP Trainer that was developed under a NASA program by Russell Targ at Stanford Research Institute.\n\n
+    <string name="about_body">
+        This app is heavily inspired by the ESP Trainer that was developed under a NASA program by Russell Targ at Stanford Research Institute.\n\n
 
-We have found that people are able to improve their score by using a machine just like this to get in touch with the part of themselves that is psychic. This is often called clairvoyance or precognition, and can enhance your life in many surprising ways.\n\n
+        <font size="20">OVERVIEW\n\n</font>
+        The player is presented with four colored squares. For each trial, one has been selected at random by the ESP Trainer. Your task is to choose the correct square, or pass. You can pass an indefinite number of times with no penalty. If you succeed, you will hear a sound, feel a vibration, and see a large color picture. Otherwise, the system flashes the correct square, and you proceed with the next trial.\n\n
 
-The player is presented with four colored squares. For each trial, one has been selected at random by the ESP Trainer. Your task is to choose the correct square. If you succeed, you will hear a chime, feel a vibration, and see a large color picture. Otherwise, the system flashes the correct square, and you proceed with the next trial. The "correct" indicator counts the number of correct choices. Words of encouragement appear as you achieve the scoring levels of 6, 8, 10, 12, and 14 hits. After 24 color selections you will see metrics about the session.\n\n
+        The Score indicator counts the number of correct choices. Words of encouragement appear as you achieve the scoring levels of 6, 8, 10, 12, and 14. After 24 color selections you will see metrics about the session. These metrics will be recorded, unless you select the Guest switch in the bottom right corner of the screen.\n\n
 
-The game offers multi-sensory feedback, reinforcement, and an opportunity to Pass, meeting all the requirements needed for learning this skill. ESP Trainer improves your ability to recognize your intuitive impressions, and it can bring you to a level of intuitive awareness beyond anything you have experienced before.\n\n
+        The History view shows you all of your recorded Sessions. Selecting a Session displays that Session\'s Results, just like when you completed it. The Metrics view shows your stats for the lifetime of your use of the app.\n\n
 
-The purpose of the trainer is to allow you to become aware of what it feels like when you psychically choose the correct square. When you don\'t have that special feeling, we encourage you to press the Pass button.\n\n
+        <font size="20">TRAINING\n\n</font>
+        This trainer offers multi-sensory feedback, reinforcement, and an opportunity to Pass, meeting all the requirements needed for learning this skill. Training improves your ability to recognize your intuitive impressions, and it can bring you to a level of intuitive awareness beyond anything you have experienced before.\n\n
 
-In a year long NASA program with 145 subjects (under Contract 953653 NAS7–100) many were able to significantly improve their scores. Four of the subjects improved their scores at the hundred-to-one level or better. This approach has been used with great success on Wall Street.\n\n
+        The purpose of the trainer is to allow you to become aware of what it feels like when you psychically choose the correct square. When you don\'t have that special feeling, we encourage you to press the Pass button.\n\n
 
-This game can provide the first steps toward experiencing and developing the psychic abilities hidden within us all.</string>
+        We have found that people are able to improve their score by using a machine just like this to get in touch with the part of themselves that is psychic. This is often called clairvoyance or precognition, and can enhance your life in many surprising ways.\n\n
+
+        In a year long NASA program with 145 subjects (under Contract 953653 NAS7–100) many were able to significantly improve their scores. Four of the subjects improved their scores at the hundred-to-one level or better. This approach has been used with great success on Wall Street.\n\n
+
+        This game can provide the first steps toward experiencing and developing the psychic abilities hidden within us all.\n\n
+
+        <font size="20">MORE\n\n</font>
+        For more information about Extra Sensory Perception, read The Reality of ESP: A Physicist\'s Proof of Psychic Abilities by Russell Targ.\n\n
+
+        \"I am convinced that most people can learn to move from their ordinary mind to one not obstructed by conventional barriers of space and time. Who would not want to try that?\" -Russell Targ</string>
    <string name="element_text">Element</string>
     <string name="high_score">High Score</string>
     <string name="consecutive_correct">Most Consecutive Correct</string>
