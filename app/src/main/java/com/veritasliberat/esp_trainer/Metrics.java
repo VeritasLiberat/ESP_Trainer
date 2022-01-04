@@ -57,7 +57,7 @@ public class Metrics {
 
         this.totalSessions = topMetrics.totalSessions + 1;
         this.totalTrials = topMetrics.totalTrials + session.numberOfTrials;
-        this.meanNumberOfTrials = this.totalSessions * 1.0 / this.totalTrials;
+        this.meanNumberOfTrials = this.totalTrials * 1.0 / this.totalSessions;
 
         this.meanSessionDuration = (topMetrics.meanSessionDuration * topMetrics.totalSessions +
                 session.sessionDuration) / this.totalSessions;

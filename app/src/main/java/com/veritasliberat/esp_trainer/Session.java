@@ -89,7 +89,7 @@ public class Session {
     public Session(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
         currentTrial = new Trial(sessionNumber, 1, mainActivity);
-        mainActivity.guestSwitch.setVisibility(View.VISIBLE);
+        mainActivity.guestSwitchView.setVisibility(View.VISIBLE);
         mainActivity.guestLabel.setVisibility(View.GONE);
         updateLabels();
     }
@@ -125,7 +125,7 @@ public class Session {
         trials.add(currentTrial);
 
         if (currentTrial.trialNumber == 1) {
-            mainActivity.guestSwitch.setVisibility(View.GONE);
+            mainActivity.guestSwitchView.setVisibility(View.GONE);
             if (guestMode) {
                 mainActivity.guestLabel.setVisibility(View.VISIBLE);
             }
@@ -149,7 +149,7 @@ public class Session {
     }
 
     void saveSession() {
-        dbTest();
+//        dbTest();
 
         MainActivity.sessionDao.insertSession(this);
         MainActivity.trialDao.insertTrials(trials);

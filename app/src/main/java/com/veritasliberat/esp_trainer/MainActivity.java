@@ -26,13 +26,14 @@ import com.google.gson.GsonBuilder;
  *              this is called after the session is complete, or from the history activity
  */
 
+@SuppressLint("UseSwitchCompatOrMaterialCode")
 public class MainActivity extends AppCompatActivity {
     public static final int NUMBER_OF_COLOR_SELECTIONS = 4;
 
     TextView currentTrialView;
     TextView scoreView;
     TextView topMessageView;
-    TextView guestSwitch;
+    TextView guestSwitchView;
     TextView guestLabel;
 
     Session currentSession;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     public static SessionDao sessionDao;
     public static TrialDao trialDao;
     public static MetricsDao metricsDao;
+    public Switch guestSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,22 +60,24 @@ public class MainActivity extends AppCompatActivity {
         topMessageView = findViewById(R.id.top_message);
         TextView currentTrialLabelView = findViewById(R.id.current_trial_label);
         currentTrialLabelView.setText("Current Trial of " + NUMBER_OF_COLOR_SELECTIONS);
-        guestSwitch = findViewById(R.id.guest_switch);
+        guestSwitchView = findViewById(R.id.guest_switch);
         guestLabel = findViewById(R.id.guest_label);
     }
 
     public void setupDatabase() {
         currentSession = new Session(this);
-        db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "esp_trainer_db").fallbackToDestructiveMigration()
-                .allowMainThreadQueries().build();
+        if (db == null) {
+            db = Room.databaseBuilder(getApplicationContext(),
+                    AppDatabase.class, "esp_trainer_db").fallbackToDestructiveMigration()
+                    .allowMainThreadQueries().build();
         sessionDao = db.sessionDao();
         trialDao = db.trialDao();
         metricsDao = db.metricsDao();
+        }
     }
 
     public void guestMode() {
-        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch guestSwitch = (Switch) findViewById(R.id.guest_switch);
+        guestSwitch = (Switch) findViewById(R.id.guest_switch);
         guestSwitch.setOnCheckedChangeListener((compoundButton, isChecked) -> currentSession.guestMode = isChecked);
     }
 
@@ -107,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void reset(View view) {
+        guestSwitch.setChecked(false);
         currentSession = new Session(this);
     }
 
