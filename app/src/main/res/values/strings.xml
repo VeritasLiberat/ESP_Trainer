@@ -2,7 +2,7 @@
     <string name="app_name">ESP Trainer</string>
     <string name="pass_button">PASS</string>
     <string name="reset_button">RESET</string>
-    <string name="current_trial_label">Current Trial of 24</string>
+    <string name="current_trial_label">"Color Selections"</string>
     <string name="correct_label">Score</string>
     <string name="title_activity_complete">CompleteActivity</string>
     <string name="complete_title">Session Results</string>

@@ -113,7 +113,7 @@ public class Session {
     }
 
     public void updateLabels() {
-        mainActivity.currentTrialView.setText(Integer.toString(colorSelections));
+        mainActivity.currentTrialView.setText(Integer.toString(colorSelections) + " / " + MainActivity.NUMBER_OF_COLOR_SELECTIONS);
         mainActivity.scoreView.setText(Integer.toString(score));
         setTopMessage();
         mainActivity.topMessageView.setText(topMessage);

@@ -38,7 +38,7 @@ public class SessionResultsActivity extends AppCompatActivity {
         resultMessageView.setText(resultMessage);
 
         TextView numberOfSelectionsView = findViewById(R.id.number_of_selections);
-        String numberOfSelections = "Number of Selections: " + session.numberOfTrials;
+        String numberOfSelections = "Number of Passes: " + (session.numberOfTrials - MainActivity.NUMBER_OF_COLOR_SELECTIONS);
         numberOfSelectionsView.setText(numberOfSelections);
 
         TextView mostConsecutiveCorrectView = findViewById(R.id.most_consecutive_correct);

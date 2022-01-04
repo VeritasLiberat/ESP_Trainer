@@ -22,6 +22,7 @@ import com.google.gson.GsonBuilder;
 public class MainActivity extends AppCompatActivity {
     public static final int NUMBER_OF_COLOR_SELECTIONS = 24;
 
+    TextView currentTrialLabelView;
     TextView currentTrialView;
     TextView scoreView;
     TextView topMessageView;
@@ -50,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
         currentTrialView = findViewById(R.id.current_trial);
         scoreView = findViewById(R.id.score);
         topMessageView = findViewById(R.id.top_message);
-        TextView currentTrialLabelView = findViewById(R.id.current_trial_label);
-        currentTrialLabelView.setText("Current Trial of " + NUMBER_OF_COLOR_SELECTIONS);
+        currentTrialLabelView = findViewById(R.id.current_trial_label);
+        currentTrialLabelView.setText(R.string.current_trial_label);
         guestSwitchView = findViewById(R.id.guest_switch);
         guestLabel = findViewById(R.id.guest_label);
     }
