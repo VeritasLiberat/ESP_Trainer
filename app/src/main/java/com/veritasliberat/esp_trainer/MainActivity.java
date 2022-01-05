@@ -18,6 +18,12 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/**
+ * todo:    add binaural beats with 'music' icon to play or stop
+ *          add P value calculation
+**/
+
+
 @SuppressLint("UseSwitchCompatOrMaterialCode")
 public class MainActivity extends AppCompatActivity {
     public static final int NUMBER_OF_COLOR_SELECTIONS = 24;

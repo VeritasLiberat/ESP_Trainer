@@ -1,5 +1,6 @@
 package com.veritasliberat.esp_trainer;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
@@ -11,6 +12,8 @@ public class Metrics {
 
     public long sessionId;
 
+    @ColumnInfo(defaultValue = "7.0")
+    public double meanScore = 0;
     public int highScore = 0;
     public int highConsecutiveCorrect = 0;
     public int totalSessions = 0;
@@ -58,6 +61,9 @@ public class Metrics {
         this.totalSessions = topMetrics.totalSessions + 1;
         this.totalTrials = topMetrics.totalTrials + session.numberOfTrials;
         this.meanNumberOfTrials = this.totalTrials * 1.0 / this.totalSessions;
+
+        this.meanScore = (topMetrics.meanScore * topMetrics.totalSessions + session.score)
+                / this.totalSessions;
 
         this.meanSessionDuration = (topMetrics.meanSessionDuration * topMetrics.totalSessions +
                 session.sessionDuration) / this.totalSessions;

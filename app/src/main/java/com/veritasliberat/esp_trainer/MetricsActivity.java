@@ -26,22 +26,30 @@ public class MetricsActivity extends AppCompatActivity {
         TableLayout table = new TableLayout(this);
         table.setPadding(150, 75, 50, 0);
 
+        table.addView(generateRow(R.string.mean_score, String.format("%,.2f", metrics.meanScore)));
+        table.addView(generateRow(R.string.total_sessions,
+                Integer.toString(metrics.totalSessions)));
         table.addView(generateRow(R.string.high_score, Integer.toString(metrics.highScore)));
         table.addView(generateRow(R.string.consecutive_correct,
                 Integer.toString(metrics.highConsecutiveCorrect)));
-        table.addView(generateRow(R.string.total_sessions,
-                Integer.toString(metrics.totalSessions)));
         table.addView(generateRow(R.string.total_trials, Integer.toString(metrics.totalTrials)));
         table.addView(generateRow(R.string.mean_number_of_trials,
                 Integer.toString((int) metrics.meanNumberOfTrials)));
 
         double meanSessionDurationSeconds = metrics.meanSessionDuration / 1000.0;
-        table.addView(generateRow(R.string.mean_session_duration,
-                String.format("%,.1f", meanSessionDurationSeconds) + " s"));
+        if (meanSessionDurationSeconds > 60) {
+            double meanSessionDurationMinutes = meanSessionDurationSeconds / 60.0;
+            table.addView(generateRow(R.string.mean_session_duration,
+                    String.format("%,.1f", meanSessionDurationMinutes) + " Mins"));
+        } else {
+            table.addView(generateRow(R.string.mean_session_duration,
+                    String.format("%,.1f", meanSessionDurationSeconds) + " Secs"));
+        }
+
 
         double meanTrialDurationSeconds = metrics.meanTrialDuration / 1000.0;
         table.addView(generateRow(R.string.mean_trial_duration,
-                String.format("%,.1f", meanTrialDurationSeconds) + " s"));
+                String.format("%,.1f", meanTrialDurationSeconds) + " Secs"));
 
         table.addView(generateRow(R.string.total_green_user_selections,
                 Integer.toString(metrics.totalGreenSelections)));
