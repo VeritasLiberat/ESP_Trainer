@@ -19,8 +19,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
- * todo:    add binaural beats with 'music' icon to play or stop
+ * todo:    make history look better, sorted by newest first
+ *              nice to have:
+ *          add binaural beats with 'music' icon to play or stop
  *          add P value calculation
+ *          send us data (opt in?)
+ *          plot of a graph (x=score, y=number of sessions). If chance, should look like a normal dist around 6
 **/
 
 

@@ -65,4 +65,5 @@
     <string name="total_yellow_correct">Total Yellow Correct</string>
     <string name="total_red_correct">Total Red Correct</string>
     <string name="total_blue_correct">Total Blue Correct</string>
+    <string name="metrics_table_divider">Detailed Metrics</string>
 </resources>
