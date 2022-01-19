@@ -20,6 +20,7 @@ android {
                                       "$projectDir/schemas".toString()]
             }
         }
+        minSdkVersion 28
     }
 
     buildTypes {

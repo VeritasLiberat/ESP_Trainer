@@ -29,9 +29,9 @@
         The History view shows you all of your recorded Sessions. Selecting a Session displays that Session\'s Results, just like when you completed it. The Metrics view shows your stats for the lifetime of your use of the app.\n\n
 
         <font size="20">TRAINING\n\n</font>
-        This trainer offers multi-sensory feedback, reinforcement, and an opportunity to Pass, meeting all the requirements needed for learning this skill. Training improves your ability to recognize your intuitive impressions, and it can bring you to a level of intuitive awareness beyond anything you have experienced before.\n\n
-
         The purpose of the trainer is to allow you to become aware of what it feels like when you psychically choose the correct square. When you don\'t have that special feeling, we encourage you to press the Pass button.\n\n
+
+        This trainer offers multi-sensory feedback, reinforcement, and an opportunity to Pass, meeting all the requirements needed for learning this skill. Training improves your ability to recognize your intuitive impressions, and it can bring you to a level of intuitive awareness beyond anything you have experienced before.\n\n
 
         We have found that people are able to improve their score by using a machine just like this to get in touch with the part of themselves that is psychic. This is often called clairvoyance or precognition, and can enhance your life in many surprising ways.\n\n
 
@@ -40,10 +40,10 @@
         This game can provide the first steps toward experiencing and developing the psychic abilities hidden within us all.\n\n
 
         <font size="20">MORE\n\n</font>
-        For more information about Extra Sensory Perception, read The Reality of ESP: A Physicist\'s Proof of Psychic Abilities by Russell Targ.\n\n
+        For more information about Extra Sensory Perception, read <i>The Reality of ESP: A Physicist\'s Proof of Psychic Abilities</i> by Russell Targ.\n\n
 
         \"I am convinced that most people can learn to move from their ordinary mind to one not obstructed by conventional barriers of space and time. Who would not want to try that?\" -Russell Targ</string>
-   <string name="element_text">Element</string>
+    <string name="element_text">Element</string>
     <string name="mean_score">Mean Score</string>
     <string name="high_score">High Score</string>
     <string name="consecutive_correct">Most Consecutive Correct</string>

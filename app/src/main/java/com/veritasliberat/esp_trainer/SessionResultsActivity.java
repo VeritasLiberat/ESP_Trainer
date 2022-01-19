@@ -46,13 +46,19 @@ public class SessionResultsActivity extends AppCompatActivity {
         mostConsecutiveCorrectView.setText(mostConsecutiveCorrect);
 
         TextView sessionDurationView = findViewById(R.id.session_duration);
+        String sessionDuration;
         double sessionDurationSeconds = session.sessionDuration / 1000.0;
-        String sessionDuration = "Session Duration in Seconds: " + String.format("%,.1f", sessionDurationSeconds);
+        if (sessionDurationSeconds > 60) {
+            double sessionDurationMinutes = sessionDurationSeconds / 60.0;
+            sessionDuration = "Session Duration: " + String.format("%,.1f", sessionDurationMinutes) + " Mins";
+        } else {
+            sessionDuration = "Session Duration: " + String.format("%,.1f", sessionDurationSeconds) + " Secs";
+        }
         sessionDurationView.setText(sessionDuration);
 
         TextView meanTrialDurationView = findViewById(R.id.mean_trial_duration);
         double meanTrialDurationSeconds = session.meanTrialDuration / 1000.0;
-        String meanTrialDuration = "Mean Trial Duration in Seconds: " + String.format("%,.1f", meanTrialDurationSeconds);
+        String meanTrialDuration = "Mean Trial Duration: " + String.format("%,.1f", meanTrialDurationSeconds) + " Secs";
         meanTrialDurationView.setText(meanTrialDuration);
 
         // Selections

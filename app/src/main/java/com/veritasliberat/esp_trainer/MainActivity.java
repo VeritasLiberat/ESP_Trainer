@@ -19,12 +19,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
- * todo:    make history look better, sorted by newest first
+ * todo:        important:
+ *          make history look better
  *              nice to have:
  *          add binaural beats with 'music' icon to play or stop
  *          add P value calculation
- *          send us data (opt in?)
  *          plot of a graph (x=score, y=number of sessions). If chance, should look like a normal dist around 6
+ *              pipe dream:
+*           send us data (opt in?)
 **/
 
 
@@ -147,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         animation.setRepeatCount(Animation.INFINITE);
         animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
 
-        Button button = (Button) findViewById(R.id.green_button);;
+        Button button = (Button) findViewById(R.id.green_button);
         switch (computerSelection) {
             case GREEN:     button = (Button) findViewById(R.id.green_button); break;
             case YELLOW:    button = (Button) findViewById(R.id.yellow_button); break;

@@ -66,7 +66,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         Session session = sessions[position];
-        String displayText = "Timestamp: " + session.endTimestamp + " | Score: " + session.score;
+        String displayText = session.endTimestamp + " | Score: " + session.score;
+        viewHolder.getTextView().setTextSize(20);
         viewHolder.getTextView().setText(displayText);
     }
 

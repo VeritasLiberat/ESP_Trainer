@@ -15,6 +15,6 @@ public interface SessionDao {
     @Delete
     public void deleteSessions(List<Session> sessions);
 
-    @Query("SELECT * FROM Session")
+    @Query("SELECT * FROM Session ORDER BY endTimestamp DESC")
     public Session[] getAllSessions();
 }
