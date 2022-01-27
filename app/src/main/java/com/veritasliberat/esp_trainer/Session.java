@@ -132,20 +132,20 @@ public class Session {
         }
 
         if (colorSelections >= MainActivity.NUMBER_OF_COLOR_SELECTIONS) {
-            completeSession();
+            completeSession(currentTrial.isCorrect);
         }
 
         currentTrial = new Trial(sessionNumber,currentTrial.trialNumber + 1, mainActivity);
     }
 
-    void completeSession() {
+    void completeSession(boolean isCorrect) {
         calculateSessionMetrics();
 
         if (!guestMode) {
             saveSession();
         }
 
-        mainActivity.complete();
+        mainActivity.complete(isCorrect);
     }
 
     void saveSession() {

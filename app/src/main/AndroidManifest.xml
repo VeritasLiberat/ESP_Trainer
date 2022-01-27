@@ -23,7 +23,6 @@
             android:parentActivityName="com.veritasliberat.esp_trainer.MenuActivity" />
         <activity
             android:name="com.veritasliberat.esp_trainer.MainActivity"
-            android:parentActivityName="com.veritasliberat.esp_trainer.MenuActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

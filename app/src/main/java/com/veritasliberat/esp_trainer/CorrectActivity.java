@@ -37,13 +37,13 @@ public class CorrectActivity extends AppCompatActivity {
         showImage();
 
         Handler handler = new Handler();
-        handler.postDelayed(this::finish, 1693);
+        handler.postDelayed(this::finish, MainActivity.CORRECT_DELAY);
     }
 
     void vibrate() {
         Vibrator v;
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+        v.vibrate(VibrationEffect.createOneShot(MainActivity.VIBRATION_DURATION, VibrationEffect.DEFAULT_AMPLITUDE));
     }
 
     void playSound() {

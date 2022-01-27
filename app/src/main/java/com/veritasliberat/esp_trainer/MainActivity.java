@@ -34,6 +34,10 @@ import com.google.gson.GsonBuilder;
 public class MainActivity extends AppCompatActivity {
     public static final int NUMBER_OF_COLOR_SELECTIONS = 24;
 
+    public static final int CORRECT_DELAY = 1693;
+    public static final int INCORRECT_DELAY = 600;
+    public static final int VIBRATION_DURATION = 500;
+
     TextView currentTrialLabelView;
     TextView currentTrialView;
     TextView scoreView;
@@ -120,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         currentSession = new Session(this);
     }
 
-    public void complete() {
+    public void complete(boolean isCorrect) {
         Intent completeIntent = new Intent(this, SessionResultsActivity.class);
 
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
@@ -128,8 +132,14 @@ public class MainActivity extends AppCompatActivity {
         String completeSession = gson.toJson(currentSession);
         completeIntent.putExtra(Session.SESSION_EXTRA_KEY, completeSession);
 
+        currentSession = new Session(this);
+
         Handler handler = new Handler();
-        handler.postDelayed((Runnable) () -> startActivity(completeIntent), 600);
+        if (isCorrect) {
+            handler.postDelayed((Runnable) () -> startActivity(completeIntent), CORRECT_DELAY);
+        } else {
+            handler.postDelayed((Runnable) () -> startActivity(completeIntent), INCORRECT_DELAY);
+        }
     }
 
     public void correct() {
@@ -160,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
         button.startAnimation(animation);
 
         Handler handler = new Handler();
-        handler.postDelayed((Runnable) button::clearAnimation, 600);
+        handler.postDelayed((Runnable) button::clearAnimation, INCORRECT_DELAY);
     }
 
 }
