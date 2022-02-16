@@ -63,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
         guestMode();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (currentSession.currentTrial.trialNumber == 1) {
+            currentSession = new Session(this);
+        }
+    }
+
     public void handleViews() {
         currentTrialView = findViewById(R.id.current_trial);
         scoreView = findViewById(R.id.score);
@@ -86,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void guestMode() {
-        guestSwitch = (Switch) findViewById(R.id.guest_switch);
+        guestSwitch = findViewById(R.id.guest_switch);
         guestSwitch.setOnCheckedChangeListener((compoundButton, isChecked) -> currentSession.guestMode = isChecked);
     }
 
@@ -136,9 +144,9 @@ public class MainActivity extends AppCompatActivity {
 
         Handler handler = new Handler();
         if (isCorrect) {
-            handler.postDelayed((Runnable) () -> startActivity(completeIntent), CORRECT_DELAY);
+            handler.postDelayed(() -> startActivity(completeIntent), CORRECT_DELAY);
         } else {
-            handler.postDelayed((Runnable) () -> startActivity(completeIntent), INCORRECT_DELAY);
+            handler.postDelayed(() -> startActivity(completeIntent), INCORRECT_DELAY);
         }
     }
 
@@ -159,18 +167,18 @@ public class MainActivity extends AppCompatActivity {
         animation.setRepeatCount(Animation.INFINITE);
         animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
 
-        Button button = (Button) findViewById(R.id.green_button);
+        Button button = findViewById(R.id.green_button);
         switch (computerSelection) {
-            case GREEN:     button = (Button) findViewById(R.id.green_button); break;
-            case YELLOW:    button = (Button) findViewById(R.id.yellow_button); break;
-            case RED:       button = (Button) findViewById(R.id.red_button); break;
-            case BLUE:      button = (Button) findViewById(R.id.blue_button); break;
+            case GREEN:     button = findViewById(R.id.green_button); break;
+            case YELLOW:    button = findViewById(R.id.yellow_button); break;
+            case RED:       button = findViewById(R.id.red_button); break;
+            case BLUE:      button = findViewById(R.id.blue_button); break;
         }
 
         button.startAnimation(animation);
 
         Handler handler = new Handler();
-        handler.postDelayed((Runnable) button::clearAnimation, INCORRECT_DELAY);
+        handler.postDelayed(button::clearAnimation, INCORRECT_DELAY);
     }
 
 }
